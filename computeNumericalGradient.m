@@ -19,7 +19,7 @@ numgrad = zeros(size(theta));
 % Hint: You will probably want to compute the elements of numgrad one at a time. 
 
 epsilon = 1e-4;
-for i=1:size(theta)
+for i = 1 : size(theta)
     theta(i) = theta(i) + epsilon;
     Jplus = J(theta);
     theta(i) = theta(i) - 2*epsilon;
@@ -29,5 +29,4 @@ for i=1:size(theta)
 end
 
 %% ---------------------------------------------------------------
-
 end
