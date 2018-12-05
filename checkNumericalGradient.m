@@ -26,10 +26,8 @@ diff = norm(numgrad-grad)/norm(numgrad+grad);
 disp(diff); 
 fprintf('Norm of the difference between numerical and analytical gradient (should be < 1e-9)\n\n');
 end
-
-
   
-function [value,grad] = simpleQuadraticFunction(x)
+function [value, grad] = simpleQuadraticFunction(x)
 % this function accepts a 2D vector as input. 
 % Its outputs are:
 %   value: h(x1, x2) = x1^2 + 3*x1*x2
