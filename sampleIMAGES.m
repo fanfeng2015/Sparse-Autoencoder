@@ -26,11 +26,11 @@ patches = zeros(patchsize*patchsize, numpatches);
 dim = size(IMAGES);
 imax = dim(3);
 
-for i = 1:numpatches
+for i = 1 : numpatches
    image = randi(imax); % randomly select which image to sample from
    row = randi(dim(1)-patchsize+1); % the row-index and column-index of the upper-left corner of the patch can not exceed 505
    col = randi(dim(1)-patchsize+1); 
-   patches(:,i) = reshape(IMAGES(row:row+patchsize-1, col:col+patchsize-1, image), patchsize*patchsize, 1);
+   patches(:, i) = reshape(IMAGES(row : row+patchsize-1, col : col+patchsize-1, image), patchsize*patchsize, 1);
 end
 
 %% ---------------------------------------------------------------
@@ -41,7 +41,6 @@ end
 patches = normalizeData(patches);
 
 end
-
 
 %% ---------------------------------------------------------------
 function patches = normalizeData(patches)
