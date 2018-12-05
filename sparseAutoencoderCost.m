@@ -58,7 +58,6 @@ spa = beta * sum(KL); % sparsity penalty term
 
 cost = mse + reg + spa; % overall cost
 
-
 delta3 = -(data-a3) .* a3 .* (1-a3); % visibleSize by m (64 by 10,000)
 temp = beta * ((1-sparsityParam) ./ (1-rhoHat) - sparsityParam ./ rhoHat); % hiddenSize by 1 (25 by 1)
 delta2 = (W2' * delta3 + repmat(temp, 1, m)) .* a2 .* (1-a2); % hiddenSize by m (25 by 10,000)
