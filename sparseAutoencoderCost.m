@@ -13,10 +13,10 @@ function [cost,grad] = sparseAutoencoderCost(theta, visibleSize, hiddenSize, ...
 % We first convert theta to the (W1, W2, b1, b2) matrix/vector format, so that this 
 % follows the notation convention of the lecture notes. 
 
-W1 = reshape(theta(1:hiddenSize*visibleSize), hiddenSize, visibleSize);
-W2 = reshape(theta(hiddenSize*visibleSize+1:2*hiddenSize*visibleSize), visibleSize, hiddenSize);
-b1 = theta(2*hiddenSize*visibleSize+1:2*hiddenSize*visibleSize+hiddenSize);
-b2 = theta(2*hiddenSize*visibleSize+hiddenSize+1:end);
+W1 = reshape(theta(1 : hiddenSize*visibleSize), hiddenSize, visibleSize);
+W2 = reshape(theta(hiddenSize*visibleSize+1 : 2*hiddenSize*visibleSize), visibleSize, hiddenSize);
+b1 = theta(2*hiddenSize*visibleSize+1 : 2*hiddenSize*visibleSize+hiddenSize);
+b2 = theta(2*hiddenSize*visibleSize+hiddenSize+1 : end);
 
 % Cost and gradient variables (your code needs to compute these values). 
 % Here, we initialize them to zeros. 
@@ -49,7 +49,6 @@ a2 = sigmoid(Z2); % hiddenSize by m (25 by 10,000)
 Z3 = W2 * a2 + repmat(b2, 1, m); % visibleSize by m (64 by 10,000)
 a3 = sigmoid(Z3); % visibleSize by m (64 by 10,000)
 
-
 mse = sum(sum((data-a3).^2, 1)) / (2*m); % mean sum-of-squares error
 reg = (sum(sum(W1.^2)) + sum(sum(W2.^2))) * (lambda/2); % regularization term (weight decay term)
 
@@ -69,13 +68,12 @@ b2grad = sum(delta3, 2) / m; % visibleSize by 1 (64 by 1)
 W1grad = delta2 * data' / m + lambda * W1; % hiddenSize by visibleSize (25 by 64)
 b1grad = sum(delta2, 2) / m; % hiddenSize by 1 (25 by 1)
 
-
 %-------------------------------------------------------------------
 % After computing the cost and gradient, we will convert the gradients back
 % to a vector format (suitable for minFunc).  Specifically, we will unroll
 % your gradient matrices into a vector.
 
-grad = [W1grad(:) ; W2grad(:) ; b1grad(:) ; b2grad(:)];
+grad = [W1grad(:); W2grad(:); b1grad(:); b2grad(:)];
 
 end
 
